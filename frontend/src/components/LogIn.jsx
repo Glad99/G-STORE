@@ -69,7 +69,7 @@ const LogIn = () => {
     }
   }
   return (
-    <div className='pt-16 w-screen'>
+    <div className='pt-3 w-screen'>
       <div className="hero min-h-screen bg-base-200 w-screen">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left lg:text-nowrap">
@@ -98,7 +98,9 @@ const LogIn = () => {
           <BiHide />}</span>
           </div>
         </div>
-        <div className="form-control mt-6">
+        <p><span className="text-[#d96846]">Admin:</span> glad4tybest@gmail.com</p>
+        <p><span className="text-[#d96846]">Password:</span> 12345</p>
+        <div className="form-control mt-2">
           <button className="btn bg-[#d96846] text-white">Login</button>
         </div>
         <div className="form-control mt-2">
