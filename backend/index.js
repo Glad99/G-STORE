@@ -2,14 +2,22 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import dotenv from "dotenv/config.js";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
 
 const app = express();
 
 // Middlewares
 app.use(express.json({ limit: "10mb" }));
 app.use(bodyParser.json());
-app.use(cors());
+
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 4000;
 
@@ -113,9 +121,9 @@ app.get("/product", async (req, res) => {
   }
 });
 
-// Catch-All Route for Client-Side Routing (if applicable)
-app.get('*', (req, res) => {
-  res.status(404).send('Page not found');
+// Catch-All Route for Undefined Routes
+app.use((req, res) => {
+  res.status(404).send("Page not found");
 });
 
 app.listen(PORT, () => {
