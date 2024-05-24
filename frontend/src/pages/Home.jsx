@@ -12,6 +12,7 @@ import Categories from "../components/Categories";
 import Footer from "../components/Footer";
 import Delivery from "../components/Delivery";
 import gsap from "gsap"
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 
 
@@ -107,7 +108,7 @@ const Home = () => {
       <AllProduct/>
       <Delivery/>
       <div className="flex justify-end m-2 mr-10 ">
-      <Link to={"/"} className="p-1 bg-slate-300 rounded-xl text-lg" ><TiArrowUp/></Link>
+      <ScrollToTopButton/>
   </div>
   
       <Footer/>
