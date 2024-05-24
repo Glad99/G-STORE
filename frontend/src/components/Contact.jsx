@@ -1,9 +1,37 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Footer from './Footer'
 import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const form = useRef();
+  const [errors, setErrors] = useState({});
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    // const formErrors = validateForm();
+    // if (Object.keys(formErrors).length > 0) {
+    //   setErrors(formErrors);
+    //   return;
+    // }
+
+    emailjs
+      .sendForm('service_tsqw1r2', 'template_vpd91nu', form.current, {
+        publicKey: 'wp86Ig-qRQiPyjTJq',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          form.current.reset();
+          setErrors({});
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
   return (
     <div className='pt-[5rem]'>
       <div className='md:flex gap-10 mx-[1rem] md:mx-[5rem] mt-10 mb-10'>
@@ -31,18 +59,18 @@ const Contact = () => {
             <p>Emails: Support@g-Store.com </p>
         </div>
         </div>
-        <div className='shadow-lg rounded p-5 md:p-10 '>
+        <form ref={form} onSubmit={sendEmail} className='shadow-lg rounded p-5 md:p-10 '>
             <div className='flex flex-wrap gap-3 mb-7'>
-            <input type="text" placeholder='Your Name' className='bg-slate-100 p-1 px-2 rounded' />
-            <input type="text" placeholder='Your Email' className='bg-slate-100 p-1 px-2 rounded' />
-            <input type="text" placeholder='Your Phone' className='bg-slate-100 p-1 px-2 rounded' />
+            <input type="name" name="user_name" placeholder='Your Name' className='bg-slate-100 p-1 px-2 rounded w-full' />
+            <input type="email" name="user_email" placeholder='Your Email' className='bg-slate-100 p-1 px-2 rounded w-full' />
+            <input type="phone" name="user_phone" placeholder='Your Phone' className='bg-slate-100 p-1 px-2 rounded w-full' />
             </div>
             <div className='flex flex-col'>
-              <textarea name="" id="" cols="30" rows="10" placeholder='Your Message  ' className='bg-slate-100 p-2'></textarea>
+              <textarea name="message" id="" cols="30" rows="10" placeholder='Your Message  ' className='bg-slate-100 p-2'></textarea>
               <div className='flex justify-end py-5'>
-            <button className='bg-[#d96846] hover:bg-[#cf7d64] rounded py-1 px-4 text-white'>Send Message</button></div>
+            <input type='submit' value="Send Message" className='bg-[#d96846] hover:bg-[#cf7d64] rounded py-1 px-4 text-white'/></div>
             </div>
-        </div>
+        </form>
         </div>
         <Footer/>
     </div>
