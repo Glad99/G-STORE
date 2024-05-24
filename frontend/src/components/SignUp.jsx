@@ -89,7 +89,7 @@ const SignUp = () => {
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left lg:text-nowrap">
       <h1 className="text-3xl md:text-5xl lg:text-5xl font-bold">Create an account</h1>
-      <p className="py-5">Enter your details / Click on <span className="text-[#d96846]">Login</span> with Admin details</p>
+      <p className="py-5">Enter your details / Click on <Link to={"/login"} className="text-[#d96846]">Login</Link> with Admin details</p>
     </div>
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 -mt-5 lg:mt-5">
       <form className="card-body"onSubmit={handleSubmit}>
