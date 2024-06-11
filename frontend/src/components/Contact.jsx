@@ -3,6 +3,7 @@ import Footer from './Footer'
 import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import emailjs from '@emailjs/browser'
+import ScrollToTopButton from './ScrollToTopButton';
 
 const Contact = () => {
   const form = useRef();
@@ -72,6 +73,9 @@ const Contact = () => {
             </div>
         </form>
         </div>
+        <div className="flex justify-end m-2 mr-10 ">
+      <ScrollToTopButton/>
+  </div>
         <Footer/>
     </div>
   )

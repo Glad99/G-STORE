@@ -7,7 +7,7 @@ import { TbMenuDeep } from "react-icons/tb";
 import { FaUserCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutRedux } from "../redux/userSlice";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -15,11 +15,12 @@ const navItems = [
   { name: "Contact us", path: "/contact" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const userData = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // useNavigate hook for programmatic navigation
+  const navigate = useNavigate();
 
   const handleShowMenu = () => {
     setShowMenu((prev) => !prev);
@@ -39,11 +40,16 @@ const Navbar = () => {
     }
   };
 
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    onSearch(e.target.value);
+  };
+
   return (
-    <header className="flex fixed w-full h-16 md:px-4 shadow-md items-center justify-center bg-white z-50 ">
+    <header className="flex fixed w-full h-16 md:px-4 shadow-md items-center justify-center bg-white z-50">
       <div className="flex items-center h-full gap-12 w-full justify-between p-5">
-        <div className="h-12 ">
-          <img src={logo} alt="" className="h-full" />
+        <div className="h-12">
+          <img src={logo} alt="G-store logo" className="h-full" />
         </div>
         <div className="hidden lg:flex">
           <label className="form-control">
@@ -66,15 +72,19 @@ const Navbar = () => {
               <Link to={nav.path}>{nav.name}</Link>
             </li>
           ))}
-          <li className="hover:text-[#d96846]">
-            <Link to={"signup"}>Sign Up</Link>
-          </li>
+          {!userData.email && (
+            <li className="hover:text-[#d96846]">
+              <Link to={"signup"}>Sign Up</Link>
+            </li>
+          )}
         </ul>
         <div className="relative md:flex hidden">
           <input
             type="text"
             placeholder="Search here"
             className="border-b border-2 p-1 rounded"
+            value={searchTerm}
+            onChange={handleSearchChange}
           />
           <IoSearchOutline className="absolute top-2 right-1" />
         </div>
@@ -82,7 +92,7 @@ const Navbar = () => {
           <IoSearchOutline className="md:hidden size-5 flex items-center justify-center" />
           <div className="flex items-center gap-[45px] size-7 relative">
             <Link to={"cart"}>
-              <img src={cart_icon} alt="" />
+              <img src={cart_icon} alt="Cart icon" />
               <div className="size-[16px] bottom-4 left-4 flex justify-center items-center bg-red-500 rounded-3xl text-white absolute">
                 {cartItemNumber.length}
               </div>
@@ -91,27 +101,13 @@ const Navbar = () => {
           <div className="text-slate-600" onClick={handleShowMenu}>
             <div className="cursor-pointer w-10 h-10 rounded-full overflow-hidden drop-shadow-md">
               {userData.image ? (
-                <img src={userData.image} className="h-full w-full" />
+                <img src={userData.image} className="h-full w-full" alt="User" />
               ) : (
                 <FaUserCircle className="size-8" />
               )}
             </div>
             {showMenu && (
               <div className="absolute right-2 bg-white py-2 shadow drop-shadow-md flex flex-col min-w-[120px] text-center">
-                {userData.email === import.meta.env.VITE_ADMIN_EMAIL && (
-                  <Link to={"dashboard"} className="whitespace-nowrap cursor-pointer px-2">
-                    Dashboard
-                  </Link>
-                )}
-                {userData.image ? (
-                  <p className="cursor-pointer text-white px-2 mb-2 bg-red-500 text-[15px] font-[500]" onClick={handleLogout}>
-                    Logout [{userData.name}]
-                  </p>
-                ) : (
-                  <Link to={"login"} className="whitespace-nowrap cursor-pointer px-2 text-[gray] text-[15px] font-[500]">
-                    Login
-                  </Link>
-                )}
                 <ul className="flex flex-col lg:hidden lg:gap-12 gap-2 mt-2 text-[gray] text-[15px] font-[500]">
                   {navItems.map((nav, idx) => (
                     <li key={idx}>
@@ -121,6 +117,20 @@ const Navbar = () => {
                     </li>
                   ))}
                 </ul>
+                {userData.email === import.meta.env.VITE_ADMIN_EMAIL && (
+                  <Link to={"dashboard"} className="whitespace-nowrap cursor-pointer px-2">
+                    Dashboard
+                  </Link>
+                )}
+                {userData.email ? (
+                  <p className="cursor-pointer text-white px-2 mb-2 bg-red-500 text-[15px] font-[500]" onClick={handleLogout}>
+                    Logout [{userData.name}]
+                  </p>
+                ) : (
+                  <Link to={"login"} className="whitespace-nowrap cursor-pointer px-2 text-[gray] text-[15px] font-[500]">
+                    Login
+                  </Link>
+                )}
               </div>
             )}
           </div>
@@ -131,4 +141,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

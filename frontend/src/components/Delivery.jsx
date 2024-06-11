@@ -22,7 +22,7 @@ const Delivery = () => {
         </div>
         </div>
       <h3 className="font-bold mt-2 text-[7px] md:text-sm">24/7 CUSTOMER SERVICE</h3>
-      <p className="text-[6px] md:text-[10px]font-semibold">Friendly 24/7 customer support</p>
+      <p className="text-[6px] md:text-[10px] font-semibold">Friendly 24/7 customer support</p>
     </div>
     <div className="flex flex-col justify-center items-center gap-1">
     <div className="flex justify-center items-center p-2 bg-slate-300 mx-8 md:mx-32 rounded-full">
@@ -31,7 +31,7 @@ const Delivery = () => {
         </div>
         </div>
       <h3 className=" font-bold mt-2 text-[7px] md:text-sm">MONEY BACK GUARANTEE</h3>
-      <p className="text-[6px] md:text-[10px]font-semibold">We return money within 30 days</p>
+      <p className="text-[6px] md:text-[10px] font-semibold">We return money within 30 days</p>
     </div>
   </div>
   </div>

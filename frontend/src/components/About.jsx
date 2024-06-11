@@ -10,6 +10,7 @@ import { TbBuildingStore } from "react-icons/tb";
 import { MdOutlineMonetizationOn } from "react-icons/md";
 import { IoGiftOutline } from "react-icons/io5";
 import { CiBag1 } from "react-icons/ci";
+import ScrollToTopButton from './ScrollToTopButton'
 
 const About = () => {
   const slideRef = useRef()
@@ -109,6 +110,9 @@ const About = () => {
         </div>
       </div>
       <Delivery/>
+      <div className="flex justify-end m-2 mr-10 ">
+      <ScrollToTopButton/>
+  </div>
       <Footer/>
     </div>
   )
