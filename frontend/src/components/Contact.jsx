@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import Footer from './Footer'
 import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
-import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
   const form = useRef();

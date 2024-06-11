@@ -2,7 +2,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css'
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
+import Homepage from './pages/Homepage';
 import Contact from './components/Contact';
 import About from './components/About';
 import SignUp from './components/SignUp';
@@ -19,6 +19,15 @@ import ProductLists from './pages/Admin Panel/ProductLists';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import Shop from './pages/Shop';
 import gsap from "gsap"
+import Women from './pages/Women';
+import Men from './pages/Men';
+import Electronics from './pages/Electronics';
+import Homes from './pages/Homes';
+import Medicine from './pages/Medicine';
+import Kids from './pages/Kids';
+import Health from './pages/Health';
+import Groceries from './pages/Groceries';
+
 
 
 function App() {
@@ -49,7 +58,7 @@ function App() {
       <Toaster />
       <Navbar/>
       <Routes>
-        <Route index element={<Home timeline={timeline}/>}  />
+        <Route index element={<Homepage timeline={timeline}/>}  />
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path='/about' element={<About/>}></Route>
         <Route path='/signup' element={<SignUp/>}
@@ -61,6 +70,14 @@ function App() {
         <Route path='/product/:productId' element={<ProductDetails/>}></Route>
         <Route path='/cart' element={<Cart/>}></Route>
         <Route path='/shop' element={<Shop/>}></Route>
+        <Route path='/women' element={<Women/>}></Route>
+        <Route path='/men' element={<Men/>}></Route>
+        <Route path='/electronics' element={<Electronics/>}></Route>
+        <Route path='/homes' element={<Homes/>}></Route>
+        <Route path='/medicine' element={<Medicine/>}></Route>
+        <Route path='/health' element={<Health/>}></Route>
+        <Route path='/kids' element={<Kids/>}></Route>
+        <Route path='/groceries' element={<Groceries/>}></Route>
       </Routes>
       </PayPalScriptProvider>
     </div>

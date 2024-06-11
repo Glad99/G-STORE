@@ -76,7 +76,7 @@ const About = () => {
         </div>
       </div>
       
-      <div className='flex px-5 md:py-5 md:pb-8  pb-3 gap-4 md:gap-20 md:justify-center md:items-center'>
+      <div className='flex px-5 md:py-5 md:pb-8  pb-3 gap-4 md:gap-20 justify-center items-center'>
         <div className=''>
           <img src="CEO.jpg" alt="" className='size-20 md:size-40 rounded bg-slate-200'/>
           <p className='font-bold text-sm md:text-xl  pt-2 pb-1'>Gladys Alu</p>

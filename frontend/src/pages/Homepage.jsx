@@ -16,7 +16,7 @@ import ScrollToTopButton from "../components/ScrollToTopButton";
 
 
 
-const Home = () => {
+const Homepage = () => {
   let timeline = gsap.timeline()
   let para = useRef(null)
   let cartImg = useRef(null)
@@ -50,6 +50,7 @@ const Home = () => {
     slideProductRef.current.scrollLeft -= 200
   }
   
+
   return (
     <div className=' '>
       <div className="flex gap-5  w-full h-screen px-10 md:px-20 lg:px-20 bg-gradient-to-b from-slate-50 from-90%  justify-center items-center pt-10  ">
@@ -100,7 +101,7 @@ const Home = () => {
           
         </div>
         <div className="flex justify-center items-center">
-          <button className="bg-[#d96846] text-white text-sm px-6 py-2 rounded-sm mb-5 mt-5">View all Products</button>
+        <Link to={"/electronics"}>  <button className="bg-[#d96846] text-white text-sm px-6 py-2 rounded-sm mb-5 mt-5">View all Products</button></Link>
         </div>
         <hr className="text-slate-800 font-medium mt-4 mb-5 w-auto" />
       </div>
@@ -116,4 +117,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Homepage

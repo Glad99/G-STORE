@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import productData from "../pages/Home"
+import productData from "../pages/Homepage"
 import { useDispatch, useSelector } from "react-redux";
 import Categories from "../components/Categories";
 import AllProduct from "../components/AllProduct";
